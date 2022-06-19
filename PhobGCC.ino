@@ -1187,6 +1187,7 @@ void readButtons(){
 	btn.Dl = !digitalRead(_pinDl);
 	btn.Dr = !digitalRead(_pinDr);
 
+
 	switch(_lConfig) {
 		case 0: //Default Trigger state
 			btn.L = !digitalRead(_pinL);
@@ -1243,6 +1244,20 @@ void readButtons(){
 	bounceDu.update();
 	bounceDl.update();
 	bounceDd.update();
+
+	static unsigned long lastpress = 0;
+
+	for(int i = 0; i < 10; i++)
+	{
+		if(btn.arr[i])
+			lastpress = millis();
+	}
+	if(lastpress < millis() - 16)
+	{
+		digitalWriteFast(_pinLED,HIGH);
+	}else
+		digitalWriteFast(_pinLED,LOW);
+
 
 
 	/* Current Commands List
