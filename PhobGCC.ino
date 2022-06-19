@@ -1250,13 +1250,14 @@ void readButtons(){
 	for(int i = 0; i < 10; i++)
 	{
 		if(btn.arr[i])
-			lastpress = millis();
+			digitalWriteFast(_pinLED,HIGH);
+			//lastpress = millis();
 	}
-	if(lastpress < millis() - 16)
-	{
-		digitalWriteFast(_pinLED,HIGH);
-	}else
-		digitalWriteFast(_pinLED,LOW);
+	// if(lastpress < millis() - 16)
+	// {
+	// 	digitalWriteFast(_pinLED,HIGH);
+	// }else
+	// 	digitalWriteFast(_pinLED,LOW);
 
 
 
