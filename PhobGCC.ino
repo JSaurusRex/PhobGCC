@@ -536,7 +536,7 @@ void commInt() {
 			digitalWriteFast(_pinLED,LOW);
 			//wait for the stop bit to be received
 			while(Serial2.available() <= _bitQueue){}
-			digitalWriteFast(_pinLED,HIGH);
+			// digitalWriteFast(_pinLED,HIGH);
 			//check to see if we just reset reportCount to 0, if we have then we will report the remainder of the poll response to the PC over serial
 			if(_reportCount == 0){
 				Serial.print("Poll: ");
@@ -676,7 +676,7 @@ void commInt() {
 		}
 	}
 	//turn the LED back on to indicate we are not stuck
-	digitalWriteFast(_pinLED,HIGH);
+	// digitalWriteFast(_pinLED,HIGH);
 }
 #else // HALFDUPLEX
 //commInt() will be called on every rising edge of a pulse that we receive
@@ -850,7 +850,7 @@ void commInt() {
 		}
 	}
 	//turn the LED back on to indicate we are not stuck
-	digitalWriteFast(_pinLED,HIGH);
+	// digitalWriteFast(_pinLED,HIGH);
 }
 void resetSerial(){
 	digitalWriteFast(_pinLED,!digitalReadFast(_pinLED));
